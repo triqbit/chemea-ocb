@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="mb-12">
+    <h1 class="font-serif text-4xl font-bold mb-4">{{ .Title }}</h1>
+    <p class="text-slate-300 text-lg">{{ .Description }}</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+    {{ range .Paginator.Pages }}
+    <article class="border border-slate-700 rounded-lg p-6 hover:shadow-orbit-sm transition">
+      <h2 class="font-serif text-2xl font-bold mb-2"><a href="{{ .Permalink }}" class="hover:text-teal transition">{{ .Title }}</a></h2>
+      <p class="text-slate-400 text-sm mb-4">{{ .Date.Format "January 2, 2006" }}</p>
+      <p class="text-slate-300 mb-4">{{ .Summary }}</p>
+      <a href="{{ .Permalink }}" class="text-teal hover:text-gold transition">Read more →</a>
+    </article>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

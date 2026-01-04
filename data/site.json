@@ -1,0 +1,65 @@
+{
+  "organizationName": "Chemea™ Oman Carbon Black (OCB)",
+  "organizationShortName": "Chemea™ OCB",
+  "tagline": "Carbon black trading for tires, rubber, plastics and industrial applications.",
+  "description": "Premium ASTM-aligned carbon black trading with resilient supply chains for tire, rubber, plastic, and industrial applications.",
+  "baseURL": "https://chemea.com/",
+  "contactEmail": "OCB@chemea.com",
+  "whatsapp": "+968 79489510",
+  "whatsappLink": "https://wa.me/96879489510",
+  "officeAddress": "Office #110, Bait Arzat Building, Al Khuwair 33, PC 112, Muscat, Oman",
+  "country": "Oman",
+  "city": "Muscat",
+  "timezone": "GST",
+  "isManufacturer": false,
+  "isTradingOrganization": true,
+  "lastUpdated": "2026-01-04",
+  "foundingYear": 2024,
+  "qualifiedProducerSystems": 10,
+  "countriesServed": 50,
+  "responseTimeHours": "24-48",
+  "social": {
+    "linkedin": "https://www.linkedin.com/company/chemea-ocb",
+    "twitter": "https://twitter.com/chemea_ocb",
+    "whatsapp": "https://wa.me/96879489510"
+  },
+  "grades": {
+    "reinforcing": ["N-220", "N-234", "N-326", "N-330", "N-339", "N-347", "N-375"],
+    "semiReinforcing": ["N-550", "N-660"],
+    "specialty": ["N-550 Chemea™ (S-SO)", "N-330 Chemea™ (V-3)", "P-Type ICJ-P-8201"]
+  },
+  "industries": [
+    "Tire Manufacturing",
+    "Rubber Goods",
+    "Plastics & Compounds",
+    "Industrial Applications"
+  ],
+  "packaging": [
+    "Paper bags (21–28 kg)",
+    "Jumbo / FIBC bags (1000–1200 kg)",
+    "Custom packaging available"
+  ],
+  "incoterms": ["EXW", "FOB", "CFR", "CIF", "DAP"],
+  "astmMethods": [
+    "D1510 - Iodine Number",
+    "D2414 - DBP Absorption",
+    "D3265 - Tint Strength",
+    "D1513 - Pour Density",
+    "D1618 - Toluene Transmittance",
+    "D1512 - pH Value",
+    "D1508 - Pellet Fines",
+    "D1509 - Heating Loss",
+    "D1514 - Sieve Residue",
+    "D1506 - Ash Content",
+    "D1619 - Sulfur Content",
+    "D6556 - N₂ Surface Area",
+    "D3313 - Pellet Hardness",
+    "D1765 - Classification"
+  ],
+  "disclaimer": "Chemea™ OCB is a trading organization sourcing carbon black from qualified third-party producers. All specifications, SDS, CoA, and regulatory statements are producer-sourced. Customers remain responsible for verifying suitability and compliance for their own uses.",
+  "dataRetention": {
+    "rfqDataYears": 2,
+    "contactDataYears": 2,
+    "dataSubjectRequestDays": 30
+  }
+}

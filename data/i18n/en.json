@@ -1,0 +1,139 @@
+{
+  "language": "English",
+  "languageCode": "en",
+  "direction": "ltr",
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "industries": "Industries",
+    "quality": "Quality",
+    "logistics": "Logistics",
+    "blog": "Blog",
+    "contact": "Contact",
+    "careers": "Careers",
+    "resources": "Resources",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "faq": "FAQ"
+  },
+  "navigation": {
+    "mainNav": "Main Navigation",
+    "footerNav": "Footer Navigation",
+    "skipToContent": "Skip to main content",
+    "searchPlaceholder": "Search articles...",
+    "mobileMenu": "Menu",
+    "closeMenu": "Close menu"
+  },
+  "cta": {
+    "requestQuote": "Request Quote",
+    "explorGrades": "Explore Grades",
+    "contactUs": "Contact Us",
+    "learnMore": "Learn More",
+    "viewDetails": "View Details",
+    "readMore": "Read More →",
+    "startRFQ": "Start Your RFQ",
+    "getInTouch": "Get in Touch"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "download": "Download",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "forms": {
+    "name": "Full Name",
+    "company": "Company Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "message": "Message",
+    "application": "Application",
+    "grade": "Carbon Black Grade",
+    "quantity": "Quantity",
+    "destination": "Destination Country",
+    "incoterm": "Preferred Incoterm",
+    "timeline": "Delivery Timeline",
+    "documentation": "Documentation Needs",
+    "requiredField": "This field is required",
+    "invalidEmail": "Please enter a valid email",
+    "successMessage": "Thank you! We'll respond within 24-48 hours.",
+    "errorMessage": "Something went wrong. Please try again."
+  },
+  "hero": {
+    "headline": "On-Spec Carbon Black for Global Industrial Markets",
+    "subheading": "Trading organization supplying ASTM-aligned grades through qualified third-party producers.",
+    "tagline": "Trading organization · Diversified sourcing · 10+ qualified systems · Global logistics"
+  },
+  "industries": {
+    "tire": "Tire",
+    "rubber": "Rubber Goods",
+    "plastics": "Plastics & Compounds",
+    "industrial": "Industrial Applications"
+  },
+  "grades": {
+    "reinforcing": "Reinforcing Grades",
+    "semiReinforcing": "Semi-Reinforcing Grades",
+    "specialty": "Specialty Grades"
+  },
+  "packaging": {
+    "paperBags": "Paper Bags (21–28 kg)",
+    "jumboBags": "Jumbo / FIBC Bags (1000–1200 kg)",
+    "custom": "Custom Packaging"
+  },
+  "incoterms": {
+    "exw": "Ex Works (EXW)",
+    "fob": "Free on Board (FOB)",
+    "cfr": "Cost and Freight (CFR)",
+    "cif": "Cost, Insurance, and Freight (CIF)",
+    "dap": "Delivered at Place (DAP)"
+  },
+  "contact": {
+    "email": "OCB@chemea.com",
+    "whatsapp": "+968 79489510",
+    "address": "Office #110, Bait Arzat Building, Al Khuwair 33, PC 112, Muscat, Oman",
+    "responseTime": "24–48 hours",
+    "getRFQResponse": "For optimal response times, include grade (if known), application, quantity, packaging, destination, Incoterms, timeline, and documentation requirements."
+  },
+  "footer": {
+    "copyright": "© {year} Chemea™ Oman Carbon Black (OCB). All rights reserved.",
+    "followUs": "Follow us on social media",
+    "quickLinks": "Quick Links",
+    "legalLinks": "Legal"
+  },
+  "errors": {
+    "pageNotFound": "Page Not Found",
+    "notFoundDescription": "Sorry, the page you're looking for doesn't exist.",
+    "serverError": "Server Error",
+    "serverErrorDescription": "Something went wrong on our end. Please try again later.",
+    "backToHome": "Back to Home"
+  },
+  "metadata": {
+    "keywords": "carbon black, ASTM, trading, Oman, rubber, tire, plastics, supply chain",
+    "description": "Premium ASTM-aligned carbon black trading with resilient supply chains.",
+    "author": "Chemea™ Oman Carbon Black (OCB)"
+  },
+  "blog": {
+    "publishedOn": "Published on",
+    "readTime": "min read",
+    "author": "Author",
+    "tags": "Tags",
+    "category": "Category",
+    "relatedArticles": "Related Articles",
+    "noArticles": "No articles found.",
+    "allArticles": "All Articles"
+  },
+  "accessibility": {
+    "skipNav": "Skip to navigation",
+    "expandMenu": "Expand menu",
+    "collapseMenu": "Collapse menu",
+    "externalLink": "Opens in new window",
+    "required": "Required"
+  }
+}

@@ -1,0 +1,32 @@
+{{ if eq .Type "blog" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ .Title }}",
+  "description": "{{ .Description | default .Site.Params.description | plainify }}",
+  "image": "{{ with .Params.image }}{{ . | absURL }}{{ else }}https://chemea.com/og-image.png{{ end }}",
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Chemea™ Oman Carbon Black (OCB)",
+    "url": "https://chemea.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Chemea™ Oman Carbon Black (OCB)",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chemea.com/logo-chemea-ocb-light.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "articleBody": "{{ .Content | plainify | truncate 500 }}",
+  "keywords": "{{ with .Params.keywords }}{{ . }}{{ else }}carbon black, ASTM, trading{{ end }}"
+}
+</script>
+{{ end }}

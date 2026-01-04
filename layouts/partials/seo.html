@@ -1,0 +1,36 @@
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="{{ .Title | default .Site.Title }}">
+<meta property="og:description" content="{{ .Description | default .Site.Params.description | plainify }}">
+<meta property="og:type" content="{{ if eq .Type "blog" }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="Chemea™ OCB">
+{{ with .Params.image }}
+  <meta property="og:image" content="{{ . | absURL }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+{{ else }}
+  <meta property="og:image" content="https://chemea.com/og-image.png">
+{{ end }}
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title | default .Site.Title }}">
+<meta name="twitter:description" content="{{ .Description | default .Site.Params.description | plainify }}">
+{{ with .Params.image }}
+  <meta name="twitter:image" content="{{ . | absURL }}">
+{{ else }}
+  <meta name="twitter:image" content="https://chemea.com/og-image.png">
+{{ end }}
+
+<!-- Article Metadata (for blog posts) -->
+{{ if eq .Type "blog" }}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:author" content="Chemea™ Oman Carbon Black (OCB)">
+  <meta property="article:section" content="Blog">
+{{ end }}
+
+<!-- Additional SEO Meta Tags -->
+<meta name="keywords" content="{{ with .Params.keywords }}{{ . }}{{ else }}carbon black, ASTM, trading, Oman, rubber, tire, plastics{{ end }}">
+<meta name="author" content="Chemea™ Oman Carbon Black (OCB)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">

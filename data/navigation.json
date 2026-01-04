@@ -1,0 +1,106 @@
+{
+  "mainNav": [
+    {
+      "label": "About",
+      "url": "/about/"
+    },
+    {
+      "label": "Products",
+      "url": "/products/"
+    },
+    {
+      "label": "Industries",
+      "url": "/industries/"
+    },
+    {
+      "label": "Quality",
+      "url": "/quality/"
+    },
+    {
+      "label": "Blog",
+      "url": "/blog/"
+    }
+  ],
+  "footerNav": [
+    {
+      "section": "Products",
+      "links": [
+        {
+          "label": "Grades",
+          "url": "/products/"
+        },
+        {
+          "label": "Quality & Compliance",
+          "url": "/quality/"
+        },
+        {
+          "label": "Industries",
+          "url": "/industries/"
+        }
+      ]
+    },
+    {
+      "section": "Company",
+      "links": [
+        {
+          "label": "About",
+          "url": "/about/"
+        },
+        {
+          "label": "Contact",
+          "url": "/contact/"
+        },
+        {
+          "label": "Blog",
+          "url": "/blog/"
+        }
+      ]
+    },
+    {
+      "section": "Resources",
+      "links": [
+        {
+          "label": "FAQ",
+          "url": "/faq/"
+        },
+        {
+          "label": "Logistics",
+          "url": "/logistics/"
+        },
+        {
+          "label": "Resources",
+          "url": "/resources/"
+        }
+      ]
+    },
+    {
+      "section": "Legal",
+      "links": [
+        {
+          "label": "Privacy",
+          "url": "/privacy/"
+        },
+        {
+          "label": "Terms",
+          "url": "/terms/"
+        }
+      ]
+    }
+  ],
+  "breadcrumbNav": [
+    {
+      "label": "Home",
+      "url": "/"
+    }
+  ],
+  "cta": {
+    "primary": {
+      "label": "Request Quote",
+      "url": "/contact/"
+    },
+    "secondary": {
+      "label": "Explore Grades",
+      "url": "/products/"
+    }
+  }
+}

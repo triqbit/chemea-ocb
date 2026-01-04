@@ -1,0 +1,51 @@
+{
+  "name": "Chemea™ Oman Carbon Black (OCB)",
+  "short_name": "Chemea™ OCB",
+  "description": "Premium ASTM-aligned carbon black trading with resilient supply chains for tire, rubber, plastic, and industrial applications.",
+  "start_url": "https://chemea.com/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#050608",
+  "background_color": "#ffffff",
+  "categories": ["business", "industrial", "technology"],
+  "screenshots": [
+    {
+      "src": "/favicons/screenshot-1.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicons/screenshot-2.png",
+      "sizes": "1080x1440",
+      "type": "image/png"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicons/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicons/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "prefer_related_applications": false
+}

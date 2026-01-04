@@ -1,0 +1,24 @@
+# Chemea™ OCB - URL Redirects for Cloudflare Pages
+
+# Redirect old blog URLs (if any migration needed in future)
+# /old-blog/* /blog/:splat 301
+
+# Redirect common misspellings or alternative URLs
+/contact-us /contact/ 301
+/about-us /about/ 301
+/our-products /products/ 301
+/grades /products/ 301
+/quality-assurance /quality/ 301
+/shipping /logistics/ 301
+/delivery /logistics/ 301
+
+# Redirect http to https (handled by Cloudflare, but included for completeness)
+# http://chemea.com/* https://chemea.com/:splat 301
+
+# Redirect root variations
+/index.html / 301
+
+# SPA fallback (if needed in future) - currently not needed for static site
+# /* /index.html 200
+
+# Catch-all for 404 (Cloudflare will serve /404.html)

@@ -1,0 +1,25 @@
+{{ if gt (len .Permalink | split "/" | len) 3 }}
+<nav class="mb-8 text-sm" aria-label="Breadcrumb">
+  <ol class="flex flex-wrap space-x-2">
+    <li>
+      <a href="/" class="text-teal hover:text-gold transition">Home</a>
+    </li>
+    
+    {{ $parts := split (strings.TrimPrefix .Site.BaseURL (strings.TrimSuffix "/" .Permalink)) "/" }}
+    {{ range $i, $part := $parts }}
+      {{ if ne $part "" }}
+        <li class="flex items-center">
+          <span class="text-slate-500 mx-2">/</span>
+          {{ if eq $i (sub (len $parts) 1) }}
+            <span class="text-slate-300 font-semibold">{{ humanize $part }}</span>
+          {{ else }}
+            <a href="{{ (printf "%s%s" $.Site.BaseURL (strings.Join (slice $parts 0 (add $i 1)) "/")) | strings.TrimSuffix "/" }}" class="text-teal hover:text-gold transition">
+              {{ humanize $part }}
+            </a>
+          {{ end }}
+        </li>
+      {{ end }}
+    {{ end }}
+  </ol>
+</nav>
+{{ end }}
