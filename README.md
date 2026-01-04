@@ -17,7 +17,7 @@ Enterprise static site for **Chemea Oman Carbon Black** — ASTM-aligned carbon 
 - **Markets**: Tire, rubber goods, plastics compounds, industrial applications
 - **Grades**: N110, N220, N330, N550, N660, N774
 - **Hub**: Muscat, Oman (Office 110, Bait Arzat Building, Al Khuwair 33, PC 112)
-- **Contact**: OCB@chemea.com | WhatsApp +968 79489510[file:1]
+- **Contact**: OCB@chemea.com
 ---
 ## Stack
 
@@ -149,7 +149,6 @@ chemea-ocb/
 [file:1][file:3]
 
 ---
-
 ## Quick Start
 
 ### Prerequisites
