@@ -96,7 +96,7 @@
 
   /* Card utilities */
   .card {
-    @apply bg-slate-900 border border-slate-700 rounded-lg p-6 hover:shadow-orbit-sm transition;
+    @apply bg-slate-900 border border-slate-700 rounded-lg p-6 hover:shadow-lg transition;
   }
 
   /* Orbit background animation */
@@ -125,13 +125,15 @@
     @apply bg-gradient-to-r from-teal to-gold bg-clip-text text-transparent;
   }
 
-  /* Accessibility utilities */
+  /* Accessibility utilities - FIXED */
   .sr-only {
-    @apply absolute w-1 h-1 p-0 -m-1 overflow-hidden clip-path-inset border-0;
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
   }
 
-  .focus:not-sr-only {
-    @apply focus:static focus:w-auto focus:h-auto focus:p-4 focus:m-0 focus:overflow-visible;
+  .focus\:not-sr-only:focus {
+    @apply static w-auto h-auto p-4 m-0 overflow-visible whitespace-normal;
+    clip: auto;
   }
 }
 
@@ -147,7 +149,7 @@
   }
 
   .animate-orbit {
-    @apply animation-orbit 20s linear infinite;
+    animation: orbit 20s linear infinite;
   }
 
   /* Smooth scrolling behavior */
