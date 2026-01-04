@@ -1,346 +1,39 @@
-name: Build, Test & Deploy to Cloudflare Pages
+name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches:
-      - main
-      - develop
-    paths:
-      - 'content/**'
-      - 'layouts/**'
-      - 'assets/**'
-      - 'data/**'
-      - 'config.toml'
-      - 'package.json'
-      - 'tailwind.config.js'
-      - '.github/workflows/deploy.yml'
-  pull_request:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-env:
-  HUGO_VERSION: 0.154.1
-  NODE_VERSION: "20"
-  CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-
 jobs:
-  validate:
-    name: Validate & Lint
+  deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: '20'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Run ESLint
-        run: npm run lint:js
-        continue-on-error: true
-        
-      - name: Run StyleLint
-        run: npm run lint:css
-        continue-on-error: true
-
-  build:
-    name: Build & Test
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    needs: validate
-
-    permissions:
-      contents: read
-      deployments: write
-      checks: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: ${{ env.HUGO_VERSION }}
-          extended: false
+          hugo-version: '0.154.1'
 
-      - name: Verify Hugo installation
-        run: hugo version
-
-      - name: Build CSS with Tailwind
-        run: npm run css:build
-        env:
-          NODE_ENV: production
-
-      - name: Build site with Hugo
-        run: hugo --minify --logLevel info
-        env:
-          HUGO_ENVIRONMENT: production
-
-      - name: Check build size
+      - name: Install & Build
         run: |
-          BUILD_SIZE=$(du -sh public/ | cut -f1)
-          echo "Build size: $BUILD_SIZE"
-          TOTAL_FILES=$(find public/ -type f | wc -l)
-          echo "Total files: $TOTAL_FILES"
+          npm ci
+          npm run css:build
+          hugo --minify
 
-      - name: Validate HTML
-        run: |
-          npm install -g html-validate
-          html-validate "public/**/*.html" || true
-
-      - name: Check for critical issues
-        run: |
-          if grep -r "TODO\|FIXME\|HACK" public/*.html 2>/dev/null | grep -v ".git"; then
-            echo "⚠️ Warning: Found TODO/FIXME/HACK comments in output"
-          fi
-
-      - name: Verify critical files
-        run: |
-          REQUIRED_FILES=(
-            "public/index.html"
-            "public/sitemap.xml"
-            "public/robots.txt"
-            "public/css/tailwind.css"
-          )
-          for file in "${REQUIRED_FILES[@]}"; do
-            if [ ! -f "$file" ]; then
-              echo "❌ Critical file missing: $file"
-              exit 1
-            fi
-            echo "✅ Found: $file"
-          done
-
-      - name: Check Core Web Vitals readiness
-        run: |
-          echo "🔍 Checking performance optimization:"
-          echo "  ✓ CSS size: $(wc -c < public/css/tailwind.css | numfmt --to=iec-i --suffix=B)"
-          echo "  ✓ JS size: $(wc -c < public/js/main.js | numfmt --to=iec-i --suffix=B 2>/dev/null || echo 'N/A')"
-          echo "  ✓ Images optimized (WebP/AVIF recommended)"
-
-      - name: Generate build report
-        run: |
-          cat > BUILD_REPORT.md << 'REPORT'
-          # Build Report
-          
-          **Build Date**: $(date -u +'%Y-%m-%d %H:%M:%S UTC')
-          **Commit**: ${{ github.sha }}
-          **Branch**: ${{ github.ref_name }}
-          **Actor**: ${{ github.actor }}
-          
-          ## Build Statistics
-          - Total files: $(find public/ -type f | wc -l)
-          - Build size: $(du -sh public/ | cut -f1)
-          - Status: ✅ Success
-          REPORT
-          cat BUILD_REPORT.md
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: hugo-build-${{ github.run_id }}
-          path: public/
-          retention-days: 7
-          if-no-files-found: error
-
-      - name: Upload build report
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-report-${{ github.run_id }}
-          path: BUILD_REPORT.md
-          retention-days: 7
-
-  deploy-staging:
-    name: Deploy to Staging (PR Preview)
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    needs: build
-    if: github.event_name == 'pull_request'
-
-    permissions:
-      contents: read
-      deployments: write
-      pull-requests: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: hugo-build-${{ github.run_id }}
-          path: public/
-
-      - name: Deploy to Cloudflare Pages (Staging)
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name=chemea-ocb --branch=staging
-
-      - name: Comment PR with preview link
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const prNumber = context.issue.number;
-            const previewUrl = `https://staging-pr-${prNumber}.chemea-ocb.pages.dev`;
-            github.rest.issues.createComment({
-              issue_number: prNumber,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `🚀 **Preview Deployment Successful!**\n\n[View preview →](${previewUrl})\n\n**Build Artifacts**: [Download](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`
-            })
-
-  deploy-production:
-    name: Deploy to Production
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    permissions:
-      contents: read
-      deployments: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: hugo-build-${{ github.run_id }}
-          path: public/
-
-      - name: Deploy to Cloudflare Pages (Production)
+      - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy public --project-name=chemea-ocb
-
-      - name: Create deployment status
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              deployment_id: ${{ github.run_id }},
-              state: 'success',
-              environment_url: 'https://chemea.com',
-              description: 'Deployed to production'
-            })
-
-      - name: Send Slack notification (if configured)
-        if: always()
-        run: |
-          if [ -n "${{ secrets.SLACK_WEBHOOK }}" ]; then
-            curl -X POST ${{ secrets.SLACK_WEBHOOK }} \
-              -H 'Content-Type: application/json' \
-              -d '{
-                "text": "✅ Chemea OCB deployed to production",
-                "blocks": [{
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Production Deployment Successful*\n• URL: <https://chemea.com|chemea.com>\n• Commit: <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n• Actor: ${{ github.actor }}"
-                  }
-                }]
-              }'
-          fi
-
-  security-scan:
-    name: Security & Performance Scan
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    needs: build
-    if: always()
-
-    permissions:
-      contents: read
-      security-events: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-        continue-on-error: true
-
-      - name: Upload Trivy results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v2
-        if: always()
-        with:
-          sarif_file: 'trivy-results.sarif'
-        continue-on-error: true
-
-      - name: Run npm audit
-        run: npm audit --audit-level=moderate
-        continue-on-error: true
-
-  notify:
-    name: Notify Results
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    needs: [build, deploy-production]
-    if: always()
-
-    steps:
-      - name: Determine status
-        id: status
-        run: |
-          if [ "${{ needs.build.result }}" == "success" ]; then
-            echo "result=✅ Build successful" >> $GITHUB_OUTPUT
-          else
-            echo "result=❌ Build failed" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Post job summary
-        run: |
-          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Status**: ${{ steps.status.outputs.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Workflow**: [View](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
-          echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
