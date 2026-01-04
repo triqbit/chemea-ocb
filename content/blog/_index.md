@@ -1,55 +1,54 @@
 ---
-title: "Blog – Chemea™ Oman Carbon Black (OCB)"
-description: "Expert insights on carbon black trading, standards, logistics, and supply chain resilience."
-date: "2026-01-04"
+title: Carbon Black Industry Insights & Resources
+description: Enterprise-grade blog covering carbon black procurement, sustainability, grade selection, and industry trends with actionable insights for procurement teams.
+slug: blog
+keywords: carbon black, procurement, ASTM grades, sustainability, industry trends, recovered carbon black, rCB
+author: Chemea OCB Editorial Team
+date: 2026-01-04
+lastmod: 2026-01-04
+draft: false
+type: blog
+layout: blog-list
 ---
 
-## Carbon Black Insights & Industry Intelligence
+## Welcome to the Chemea OCB Blog
 
-Chemea™ OCB blog provides expert commentary, market analysis, and technical guidance for procurement, QA, and supply chain professionals in the carbon black industry.
+Discover in-depth insights on carbon black sourcing, procurement strategies, sustainability initiatives, and industry trends that matter to procurement and formulation teams.
+
+### Featured Content Areas
+
+**Sustainability & Circular Economy**
+- Recovered Carbon Black (rCB) integration strategies
+- ESG compliance frameworks
+- Circular economy opportunities
+- Cost-benefit analysis of sustainable sourcing
+
+**Technical & Procurement**
+- ASTM grade selection guides
+- Application-specific optimization
+- Quality control best practices
+- Supply chain resilience strategies
+
+**Industry Trends**
+- Market analysis and forecasting
+- Regulatory updates
+- Technology innovations
+- Global sourcing opportunities
+
+### How to Use This Blog
+
+Each post includes:
+- **Executive Summary** - Quick overview of key takeaways
+- **Deep Dive Content** - Comprehensive technical analysis
+- **Implementation Framework** - Actionable steps and checklists
+- **Case Studies** - Real-world examples
+- **References** - Standards, regulations, and sources
 
 ### Latest Articles
 
-Browse our collection of articles covering:
-- **Standards & Compliance**: ASTM updates, ISO equivalents, regulatory changes
-- **Market Intelligence**: Supply trends, regional disruptions, pricing dynamics
-- **Logistics & Operations**: Incoterms, packaging, route optimization
-- **Sustainability**: Recovered carbon black, emissions management, circular economy
-- **Technical Deep Dives**: Grade selection, application engineering, testing methods
-- **Supply Resilience**: Diversification strategies, risk mitigation, business continuity
-
-### Why Read Our Blog?
-
-✓ **Authoritative**: Written by supply chain and technical experts  
-✓ **Timely**: Published quarterly with current market and standards updates  
-✓ **Practical**: Actionable insights you can apply immediately  
-✓ **Compliant**: All content reflects trading-organization positioning and producer-sourced specifications  
-
-### Featured Topics
-
-**Standards & Compliance**  
-Stay current with ASTM revisions, ISO equivalents, and regional regulatory changes affecting carbon black sourcing and documentation.
-
-**Supply Chain Resilience**  
-Discover strategies for mitigating single-source risk, optimizing lead times, and maintaining uninterrupted supply even during market disruptions.
-
-**Logistics & Incoterms**  
-Master delivery terms, packaging optimization, and route planning to reduce landed cost and improve procurement efficiency.
-
-**Sustainability & Recovered Carbon**  
-Explore circular economy opportunities, recovered carbon black technologies, and how they integrate into traditional supply chains.
-
-**Application Engineering**  
-Deep dives into grade selection, formulation optimization, and performance testing for tire, rubber, plastics, and industrial applications.
+Browse articles by category or read our most recent posts below. Each article is written by industry experts and includes practical implementation guidance.
 
 ---
 
-### Subscribe for Updates
-
-Get new articles delivered to your inbox quarterly. **[Subscribe →](#subscribe)**
-
-### Have Topic Ideas?
-
-Suggest topics or ask questions: **OCB@chemea.com**
-
-[View All Articles →](#articles)
+**Have a topic you'd like us to cover?** [Contact us](mailto:insights@chemea.com)  
+**Subscribe for updates:** [Newsletter](https://chemea.com/subscribe)
