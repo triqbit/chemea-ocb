@@ -1,31 +1,19 @@
-baseURL = "https://chemea.com/"
-languageCode = "en"
+baseURL = "https://chemea-ocb.pages.dev/"
+languageCode = "en-us"
 title = "Chemea™ Oman Carbon Black (OCB)"
 theme = ""
-enableRobotsTXT = true
-paginate = 10
-defaultContentLanguage = "en"
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  description = "Global carbon black trading leader"
+  author = "Chemea"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
-
-[params]
-  lastUpdated = "2026-01-04"
-  organizationName = "Chemea™ Oman Carbon Black (OCB)"
-  tagline = "Carbon black trading for tires, rubber, plastics and industrial applications."
-  contactEmail = "OCB@chemea.com"
-  whatsapp = "+968 79489510"
-  officeAddress = "Office #110, Bait Arzat Building, Al Khuwair 33, PC 112, Muscat, Oman"
-  isManufacturer = false
-  description = "Premium ASTM-aligned carbon black trading with resilient supply chains for tire, rubber, plastic, and industrial applications."
-
-[markup]
-  [markup.goldmark.renderer]
-    unsafe = true
-
-[permalinks]
-  blog = "/blog/:slug/"
-
-[services]
-  [services.disqus]
-    shortname = ""
