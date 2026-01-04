@@ -1,7 +1,6 @@
 baseURL = "https://chemea-ocb.pages.dev/"
 languageCode = "en-us"
 title = "Chemea™ Oman Carbon Black (OCB)"
-theme = ""
 
 [pagination]
   pagerSize = 10
