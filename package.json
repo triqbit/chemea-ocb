@@ -1,27 +1,16 @@
 {
   "name": "chemea-ocb-site",
   "version": "1.0.0",
-  "description": "Chemea™ OCB static website – Hugo + Tailwind",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run css:dev\" \"hugo server -D\"",
-    "css:dev": "tailwindcss -i ./assets/css/main.css -o ./assets/css/tailwind.css --watch",
-    "build": "npm run css:build && hugo --minify",
-    "css:build": "NODE_ENV=production tailwindcss -i ./assets/css/main.css -o ./assets/css/tailwind.css --minify",
-    "validate": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint assets/js --ext .js || true",
-    "lint:css": "stylelint \"assets/css/**/*.css\" || true"
+    "dev": "hugo server -D",
+    "css:build": "npx tailwindcss -i ./assets/css/main.css -o ./assets/css/tailwind.css --minify",
+    "build": "npm run css:build && hugo --minify"
   },
   "devDependencies": {
-    "@eslint/js": "^9.0.0",
     "autoprefixer": "^10.4.0",
-    "concurrently": "^8.2.0",
     "cssnano": "^6.0.0",
-    "eslint": "^9.0.0",
     "postcss": "^8.4.0",
-    "postcss-cli": "^10.1.0",
-    "stylelint": "^16.0.0",
-    "stylelint-config-standard": "^36.0.0",
     "tailwindcss": "^4.1.0"
   }
 }
